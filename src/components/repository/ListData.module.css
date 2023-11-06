@@ -1,0 +1,45 @@
+.container {
+  background-color: rgb(32, 34, 22);
+  margin-top: 1rem ;
+  padding-top: 1rem ;
+
+}
+
+.list {
+  border: 1px solid #2D3566;
+  margin: 1rem 0;
+  background-color: rgb(26, 26, 68);
+  margin: 1rem;
+  padding: 1rem;
+
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.list li {
+  padding: 0 0 0 1rem;
+  border-left: 1px solid rgb(16, 197, 0);
+  margin: 0 0 1rem 0;
+}
+
+.list p {
+  text-align: left;
+  padding: 0 0 0 1rem;
+}
+
+.list a {
+  text-decoration: none;
+  color: rgb(16, 197, 0);
+  border: 1px solid rgb(16, 197, 0);
+  padding: .2rem;
+  transition: .5s;
+
+}
+
+.list a:hover {
+  background-color: rgb(16, 197, 0);
+  color: rgb(26, 26, 68);
+}
