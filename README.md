@@ -1,6 +1,8 @@
-# React + TypeScript + Vite
+# Github Finder
+<p>Esse projeto fofi elaborado com o intuito de praticar desenvolvimento de fronts com o React</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Tecnologias:**
+- `React + TypeScript + Vite`
 
 Currently, two official plugins are available:
 
