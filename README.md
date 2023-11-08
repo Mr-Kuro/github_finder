@@ -1,29 +1,46 @@
-# Github Finder
-<p>Esse projeto fofi elaborado com o intuito de praticar desenvolvimento de fronts com o React</p>
+# GitHub Finder
 
-**Tecnologias:**
-- `React + TypeScript + Vite`
+Este projeto é uma aplicação web que permite aos usuários pesquisar por usuários e repositórios do GitHub. Ele utiliza a API pública do GitHub para obter informações sobre os usuários e repositórios.
 
-Currently, two official plugins are available:
+## Containers
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O projeto é composto por dois containers principais:
 
-## Expanding the ESLint configuration
+- **Home**: Este container é responsável pela rota inicial `/` e chama o componente `Search` que permite aos usuários pesquisar por usuários do GitHub.
+- **Repository**: Este container é responsável pela rota `/:username/repos` e chama o componente `ListData` que exibe todas as informações sobre os repositórios de um usuário específico.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Componentes
 
-- Configure the top-level `parserOptions` property like this:
+O projeto é composto por:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- **user/Search**: componente chamado pelo container Home que permite aos usuários pesquisar por usuários do GitHub na rota `/`.
+- **repository/ListData**: componente chamado pelo container Repository que exibe todas as informações sobre os repositórios de um usuário específico na rota `/:username/repos`.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Rotas
+
+O projeto possui as seguintes rotas:
+
+| Route | Description |
+| --- | --- |
+| `/` | Permite aos usuários pesquisar por usuários do GitHub. |
+| `/:username/repos` | Exibe informações detalhadas sobre os repositórios de um usuário específico do GitHub. |
+
+## Libs e Frameworks
+
+Cada tecnologia tem um papel específico no projeto. A API do GitHub é usada para obter dados, Vite é usado para construir o projeto e React é usado para construir a interface do usuário.
+
+#### Tecnologias destacadas
+
+<!-- Adicionando documentação do TypeScript na tabela -->
+| Tecnologia | Documentação | Descrição |
+|------------|--------------|-----------|
+| GitHub API | [https://docs.github.com/en/rest](https://docs.github.com/en/rest) | API pública do GitHub |
+| Vite       | [https://vitejs.dev/](https://vitejs.dev/) | Build tool para projetos em JavaScript e TypeScript |
+| React      | [https://reactjs.org/](https://reactjs.org/) | Biblioteca JavaScript para construção de interfaces de usuário |
+| react-dom  | [https://reactjs.org/docs/react-dom.html](https://reactjs.org/docs/react-dom.html) | Pacote que fornece métodos específicos para o DOM do navegador, usados ​​por React |
+| TypeScript | [https://www.typescriptlang.org/docs/](https://www.typescriptlang.org/docs/) | Superset de JavaScript que adiciona tipagem estática opcional e outras funcionalidades ao JavaScript |
+
+## Licença
+
+Este projeto é licenciado sob a licença MIT. Consulte o arquivo [LICENSE.md](./LICENSE.md) para obter mais informações.
+
