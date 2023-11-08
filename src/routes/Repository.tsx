@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { RepositoryProps } from "../types";
 import { useParams } from "react-router-dom";
 import { ListData } from '../components/repository/index';
@@ -14,37 +13,44 @@ function Repository() {
 
   const [repositories, setRepositories] = useState<RepositoryProps[]>();
 
+const isMounted = useRef(false);
+
 
   const loadRepositories = async () => {
     const res = await fetch(`https://api.github.com/users/${username}/repos`);
-    let data = await res.json();
-    data = data.map((repo: any) => {
+    const data = await res.json();
+    const repositories: RepositoryProps[] = data.map((repo: any) => {
       return {
         name: repo.name,
         full_name: repo.full_name,
         stargazers_count: repo.stargazers_count,
-        topics: repo.topics,
         description: repo.description,
         language: repo.language,
         html_url: repo.html_url,
+        forks_count: repo.forks_count,
       }
     })
-    setRepositories(data);
+    setRepositories(repositories);
   }
 
 
+
   useEffect(() => {
+    isMounted.current = true;
+    console.log('mounted');
     loadRepositories();
-  },[])
-
-
-  console.log(repositories);
+    return () => {
+      console.log('unmounted');
+      setRepositories([]);
+      isMounted.current = false;
+    }
+  },[isMounted])
 
 
   return (
     <div >
       <h2>{`Explore os repositórios do usuário: ${username}`}</h2>
-      <ListData dados={repositories} />
+      <ListData repositories={repositories} />
     </div>
   );
 }
