@@ -1,21 +1,20 @@
 .container {
-  background-color: rgb(32, 34, 22);
+  background-color:#2E3667;
+  border-radius: 5px;
   margin-top: 1rem;
-  padding-top: 1rem;
   min-height: 30vh;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-
+  padding: 1.5rem;
 }
 
 .list {
-  border: 1px solid #2D3566;
-  margin: 1rem 0;
-  background-color: rgb(26, 26, 68);
-  margin: 1rem;
-  padding: 1rem;
+  border: 1px solid#787FAF;
+  border-radius: 5px;
 
+  background-color:#10112B;
+  padding: 1rem;
+  margin: 0 0 1rem 0;
   list-style: none;
 
   display: flex;
@@ -29,45 +28,61 @@
 }
 
 .list li {
-  padding: 0 0 0 1rem;
-  border-left: 1px solid rgb(16, 197, 0);
-  margin: 0 0 1rem 0;
-}
+  padding: .5rem .5rem .5rem 0;
 
-.list p {
-  text-align: left;
-  padding: 0 0 0 1rem;
 }
 
 .list a {
+  display: flex;
+  align-content: center;
+  align-items: center;
   text-decoration: none;
-  color: rgb(16, 197, 0);
-  border: 1px solid rgb(16, 197, 0);
   border-radius: 5px;
-  padding: .5rem;
+  padding: .3rem;
   transition: .5s;
+  background-color: #303464;
 
 }
 
 .list a:hover {
-  background-color: rgb(16, 197, 0);
-  color: rgb(26, 26, 68);
+  background-color: rgb(26, 26, 68);
 }
 
 .item_container {
   display: flex;
-  margin: 0 0 1rem 0;
+  margin: 0 0 .5rem 0;
 }
 
 .stars_forks {
   display: flex;
   align-items: center;
   align-content: center;
+  width: fit-content;
 }
 
-.stars_forks:nth-child(2) > li {
-  margin-left: 10px;
-  margin-right: 10px !important;
+.stars_forks li {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  margin: 0 0 0 1rem;
+  padding: 0;
+  border: #787FAF 1px solid;
+  border-radius: .5rem;
+}
+
+.stars_forks li  div {
+  margin: 0;
+}
+
+.stars_forks li span {
+  padding: .2rem .5rem;
+}
+
+
+.stars_forks .icon_svg {
+  height: 100%;
+  width: 1.4rem;
 }
 
 .icon_svg {
@@ -76,15 +91,18 @@
   font-size: 1.5rem;
   margin-right: .5rem;
 
-  background-color: rgb(16, 197, 0);
-  border-radius: 25%;
+  border-radius: .5rem;
+}
+
+.icon_svg_colored {
+  background-color: rgba(77, 144, 71, 0.804)
 }
 
 .error_li {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  border-left: 1px solid rgb(16, 197, 0);
+  border-left: 1px solid red;
   padding: 0 0 0 1rem;
   margin: 0 0 1rem 0;
 }

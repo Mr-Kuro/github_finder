@@ -2,14 +2,14 @@ import { Error } from '..'
 import { RepositoryProps } from '../../types'
 import styles from './ListData.module.css'
 import { AiOutlineCode, AiOutlineStar, AiOutlineFork } from 'react-icons/ai'
-import { TbFileDescription } from 'react-icons/tb'
+import { TbFileDescription, TbError404 } from 'react-icons/tb'
 import { GiBurningBook } from 'react-icons/gi'
 
 function ListData({ repositories }: { repositories: RepositoryProps[] | undefined }) {
   const render_List_Or_Error = (data: string, type: string) => {
     if (!data) return (
       <div className={styles.error_li}>
-        < AiOutlineCode className={styles.icon_svg} /> <Error msg='Não definido' />
+        < TbError404 className={styles.icon_svg} /> <Error msg='Não definido' />
       </div>
     )
 
@@ -20,9 +20,9 @@ function ListData({ repositories }: { repositories: RepositoryProps[] | undefine
         case 'language':
           return <AiOutlineCode className={styles.icon_svg} />;
         case 'stargazers_count':
-          return <AiOutlineStar className={styles.icon_svg} />;
+          return <AiOutlineStar className={`${styles.icon_svg} ${styles.icon_svg_colored}`} />;
         case 'forks_count':
-          return <AiOutlineFork className={styles.icon_svg} />;
+          return <AiOutlineFork className={`${styles.icon_svg} ${styles.icon_svg_colored}`} />;
       }
     }
 
@@ -51,21 +51,26 @@ function ListData({ repositories }: { repositories: RepositoryProps[] | undefine
     return repositories.map((repo: RepositoryProps) => {
       return (
         <ul className={styles.list} key={repo.full_name}>
-          <h2 className={styles.list_title} >{repo.full_name}</h2>
+          <h2 className={styles.list_title} >{repo.name}</h2>
 
           {render_List_Or_Error(repo.description, 'description')}
           {render_List_Or_Error(repo.language, 'language')}
-            <div className={styles.stars_forks}>
-              {render_List_Or_Error(repo.stargazers_count.toString(), 'stargazers_count')}
-              {render_List_Or_Error(repo.forks_count.toString(), 'forks_count')}
+
+          <div className={styles.stars_forks}>
+            {render_List_Or_Error(repo.stargazers_count.toString(), 'stargazers_count')}
+            {render_List_Or_Error(repo.forks_count.toString(), 'forks_count')}
           </div>
 
-          <li >
+          <li className={styles.repository_button}>
             <div className={styles.item_container}>
               <a target='blank' href={repo.html_url}>
                 <div>
-                  <GiBurningBook className={styles.icon_svg} />Ver Repositório
-                </div> </a>
+                  <GiBurningBook className={styles.icon_svg} />
+                  <span>
+                    Repositório
+                  </span>
+                </div>
+              </a>
             </div>
           </li>
         </ul>
