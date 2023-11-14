@@ -13,8 +13,9 @@ O projeto é composto por dois containers principais:
 
 O projeto é composto por:
 
-- **user/Search**: componente chamado pelo container Home que permite aos usuários pesquisar por usuários do GitHub na rota `/`.
-- **repository/ListData**: componente chamado pelo container Repository que exibe todas as informações sobre os repositórios de um usuário específico na rota `/:username/repos`.
+- **user/Search**: componente chamado pelo container `Home` que permite aos usuários pesquisar por usuários do GitHub na rota `/`.
+- **user/User**: componente  é responsável por exibir todas as informações sobre um usuário específico do GitHub, ele é chamado pelo container `Home`.
+- **repository/ListData**: componente chamado pelo container `Repository` que exibe todas as informações sobre os repositórios de um usuário específico na rota `/:username/repos`.
 
 ## Rotas
 

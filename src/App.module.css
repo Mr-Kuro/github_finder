@@ -3,7 +3,16 @@
   margin: 0 auto;
 }
 
-.app h1 {
-  text-align: center;
+.app .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin-bottom: 1rem;
 } 
+
+
+
+.svg {
+  width: 20%;
+}
