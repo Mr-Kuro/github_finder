@@ -5,7 +5,10 @@ function App() {
 
   return (
     <div className={style.app}>
-      <h1>Github Finder</h1>
+      <div className={style.logo}>
+        <img className={style.svg} src="./logo.svg" alt="" />
+        <h1>Github Finder</h1>
+      </div>
       <Outlet />
     </div>
   )

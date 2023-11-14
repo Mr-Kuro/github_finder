@@ -3,6 +3,8 @@ import React from 'react'
 function Error({ msg }: any) {
   const renderError = () => {
     const error_style: React.CSSProperties = {
+      padding: '0px',
+      margin: '0px',
       color: 'red',
       display: 'flex',
     }
@@ -14,7 +16,7 @@ function Error({ msg }: any) {
         </div>
       )
     }
-    return <p style={error_style}>Usuário não encontrado! 404</p>
+    return <p style={error_style}>Usuário não encontrado<br/> 404</p>
   }
 
   return (
