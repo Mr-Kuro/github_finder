@@ -21,7 +21,7 @@ function User({
           <span>{location}</span>
         </p>
       )}
-      <div className={styles.stats}>
+      <div className={styles.status}>
         <div>
           <p className={styles.number}>Seguidores:
             <p>{followers}</p>
