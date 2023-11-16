@@ -6,7 +6,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider  } from 'react-router-dom';
 
 // Pages
-import {Home, Repository} from './routes/index'
+import {Home, Repository} from './containers/index'
 
 const router = createBrowserRouter([
   {

@@ -18,10 +18,10 @@ function Search({ loadUser }: SearchProps) {
   }
 
   return (
-    <div className={styles.search}>
+    <div className={styles.search_container}>
       <h2>Busque por usuário:</h2>
       <p>Conheça seus melhores repositórios</p>
-      <div className={styles.search_container}>
+      <div className={styles.search}>
         <input type="text" placeholder='Digite o nomome do usuário' onChange={(e) => setUsername(e.target.value)} onKeyUp={handleKeyup} autoFocus/>
         <button onClick={() => loadUser(username)}>
           <BsSearch />
