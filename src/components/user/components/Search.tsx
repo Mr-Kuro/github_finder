@@ -11,9 +11,15 @@ import { useState, KeyboardEvent } from 'react'
 function Search({ loadUser }: SearchProps) {
   const [username, setUsername] = useState('');
 
+  const focusInput = () => {
+    const input = document.querySelector('input')
+    input?.focus()
+  }
+
   const handleKeyup = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
       loadUser(username)
+      focusInput()
     }
   }
 
