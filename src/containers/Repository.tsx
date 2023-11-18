@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { RepositoryProps } from "../types";
 import { useParams } from "react-router-dom";
 import { ListData } from '../components/repository/index';
+import Error, { errorDescription } from '../components/error/Error';
+import { errorStyle } from '../components/error/Error';
 
 type UserParams = {
   username: string;
@@ -11,14 +13,29 @@ function Repository() {
 
   const username = useParams<UserParams>().username;
 
-  const [repositories, setRepositories] = useState<RepositoryProps[]>();
+  const [repositories, setRepositories] = useState<RepositoryProps[] | null>(null);
 
-const isMounted = useRef(false);
-
+  const [error, setError] = useState<errorDescription[] | false>(false);
 
   const loadRepositories = async () => {
     const res = await fetch(`https://api.github.com/users/${username}/repos`);
+
+    if (res.status === 404) {
+      setError([{mensagem: 'Usuário não encontrado!', status: 404}]);
+      return;
+    } else {
+      setError(false);
+    }
+
     const data = await res.json();
+
+    if (data.length === 0) {
+      setError([{mensagem: 'Nenhum repositório encontrado', status: 404}]);
+      return;
+    } else {
+      setError(false);
+    }
+
     const repositories: RepositoryProps[] = data.map((repo: any) => {
       return {
         name: repo.name,
@@ -30,27 +47,32 @@ const isMounted = useRef(false);
         forks_count: repo.forks_count,
       }
     })
+
     setRepositories(repositories);
   }
 
 
 
   useEffect(() => {
-    isMounted.current = true;
-    console.log('mounted');
     loadRepositories();
-    return () => {
-      console.log('unmounted');
-      setRepositories([]);
-      isMounted.current = false;
-    }
-  },[isMounted])
+  },[])
 
+  const componentitleStyle: React.CSSProperties = {
+    display: 'flex',
+    flexFlow: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '2rem 0 0 0',
+  };
 
   return (
     <div >
-      <h2>{`Explore os repositórios do usuário: ${username}`}</h2>
-      <ListData repositories={repositories} />
+      <div style={componentitleStyle}>
+        <h2>{`Explore os repositórios do`}</h2>
+        <h3>{username}</h3>
+      </div>
+      {repositories && <ListData repositories={repositories} />}
+      {error && <div style={errorStyle} ><Error {...{descriptions: error, styled: true}} /></div>}
     </div>
   );
 }

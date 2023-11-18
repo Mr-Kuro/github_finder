@@ -5,11 +5,11 @@ import { AiOutlineCode, AiOutlineStar, AiOutlineFork } from 'react-icons/ai'
 import { TbFileDescription, TbError404 } from 'react-icons/tb'
 import { GiBurningBook } from 'react-icons/gi'
 
-function ListData({ repositories }: { repositories: RepositoryProps[] | undefined }) {
+function ListData({ repositories }: { repositories: RepositoryProps[]}) {
   const render_List_Or_Error = (data: string, type: string) => {
     if (!data) return (
       <div className={styles.error_li}>
-        < TbError404 className={styles.icon_svg} /> <Error msg='Não definido' />
+        < TbError404 className={styles.icon_svg} /> <Error descriptions={[{mensagem: `${type} - not found`}]} styled={true} />
       </div>
     )
 
@@ -38,15 +38,6 @@ function ListData({ repositories }: { repositories: RepositoryProps[] | undefine
   }
 
   const renderData = () => {
-    if (!repositories) {
-      return (
-        <Error />
-      )
-    } else if (repositories.length === 0) {
-      return (
-        <Error msg='Nenhum repositório encontrado' />
-      )
-    }
 
     return repositories.map((repo: RepositoryProps) => {
       return (

@@ -3,21 +3,12 @@ import { Search } from "../components";
 import { UserProps } from "../types";
 import {User} from "../components"
 import {Error} from "../components"
+import { errorDescription } from '../components/error/Error';
+import { errorStyle } from '../components/error/Error';
+
 const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
-  const [error, setError] = useState(false);
-
-  const errorStyle: React.CSSProperties = {
-    display: 'flex',
-    flexFlow: 'row nowrap',
-
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    borderLeft: '1px solid red',
-    padding: '0 0 0 1rem',
-    margin: '0 0 1rem 0',
-  };
+  const [error, setError] = useState<errorDescription[] | false>(false);
   
   const loadUser = async (username: string) => {
     const res = await fetch(`https://api.github.com/users/${username}`);
@@ -25,7 +16,7 @@ const Home = () => {
 
     if (res.status === 404) {
       setUser(null);
-      setError(true);
+      setError([{mensagem: "Usuário não encontrado!", status: 404}]);
       return;
     } else {
       setError(false);
@@ -47,7 +38,7 @@ const Home = () => {
     <div>
       <Search loadUser={loadUser} />
       {user && <User {...user}/>}
-      {error && <div style={errorStyle}><Error msg=''/></div>}
+      {error && <div style={errorStyle}><Error descriptions={error} styled={true}/></div>}
     </div>
   );
 }
